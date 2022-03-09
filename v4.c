@@ -1,0 +1,28 @@
+#include <stdint.h>
+
+union Pixel
+{
+    uint8_t c[4]; // four channels: red, green, blue, alpha
+    uint32_t v;   // full pixel value as a 32-bit integer
+};
+
+static uint32_t pack_fields(uint8_t r, uint8_t g, uint8_t b) {
+  return r | (g << 10) | (b << 20);
+}
+
+void v4_darken(union Pixel* first, union Pixel* last, int darkness)
+{
+  int factor = darkness / 8;
+  for (; first < last; ++first) {
+    uint32_t v = first->v;
+    uint32_t fields = (v & 0xFF) |
+                     ((v & 0xFF00) << 2) |
+                     ((v & 0xFF0000) << 4);
+    fields *= factor;
+    fields += pack_fields(31, 31, 31);
+    v -= (fields >> 5) & 0x1F;
+    v -= (fields >> 7) & 0x1F00;
+    v -= (fields >> 9) & 0x1F0000;
+    first->v = v;
+  }
+}
