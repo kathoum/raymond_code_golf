@@ -27,7 +27,7 @@ void timing(
         const char* name, void (*darken)(union Pixel* first, union Pixel* last, int darkness),
         union Pixel* image, size_t len, int darkness, union Pixel* reference, clock_t reftime) {
     size_t size_bytes = len * sizeof(union Pixel);
-    union Pixel* copy = malloc(size_bytes);
+    union Pixel* copy = (union Pixel*)malloc(size_bytes);
     memcpy(copy, image, size_bytes);
     clock_t t = clock();
     darken(copy, copy+len, darkness);
@@ -42,12 +42,12 @@ void timing(
 int main(int argc, char** argv) {
     size_t len = 10000*10000;
     size_t size_bytes = len * sizeof(union Pixel);
-    union Pixel* image = malloc(size_bytes);
+    union Pixel* image = (union Pixel*)malloc(size_bytes);
     fill(image, len);
 
     int darkness = argc > 1 ? atoi(argv[1]) : 24;
 
-    union Pixel* v1 = malloc(size_bytes);
+    union Pixel* v1 = (union Pixel*)malloc(size_bytes);
     memcpy(v1, image, size_bytes);
     clock_t t1 = clock();
     v1_darken(v1, v1+len, darkness);
