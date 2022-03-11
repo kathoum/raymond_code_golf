@@ -1,4 +1,4 @@
-sources = main.c v1.c v2.c v3.c v4.c v5d.c v6d.c v7d.c v8.c v9d.c vad.c vb.c
+sources = main.c v1.c v2.c v3.c v4.c v5d.c v6d.c v7d.c v8.c v9d.c vad.c vb.c vcd.c
 output = program
 
 $(output): $(sources)
