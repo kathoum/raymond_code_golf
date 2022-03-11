@@ -1,8 +1,8 @@
-sources = main.c v1.c v2.c v3.c v4.c v5d.c v6d.c v7d.c v8.c v9d.c vad.c
+sources = main.c v1.c v2.c v3.c v4.c v5d.c v6d.c v7d.c v8.c v9d.c vad.c vb.c
 output = program
 
 $(output): $(sources)
-	$(CC) -Wall -Wextra -std=c17 -O3 -march=native $^ -o $@
+	$(CC) -Wall -Wextra -std=c17 -Os -march=native $^ -o $@
 
 run: $(output)
 	./$(output)

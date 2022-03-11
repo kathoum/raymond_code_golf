@@ -20,6 +20,7 @@ void v7_darken(union Pixel* first, union Pixel* last, int darkness);
 void v8_darken(union Pixel* first, union Pixel* last, int darkness);
 void v9_darken(union Pixel* first, union Pixel* last, int darkness);
 void va_darken(union Pixel* first, union Pixel* last, int darkness);
+void vb_darken(union Pixel* first, union Pixel* last, int darkness);
 
 void fill(union Pixel* first, size_t count);
 
@@ -63,6 +64,7 @@ int main(int argc, char** argv) {
     timing("v8", v8_darken, image, len, darkness, v1, t1);
     timing("v9", v9_darken, image, len, darkness, v1, t1);
     timing("va", va_darken, image, len, darkness, v1, t1);
+    timing("vb", vb_darken, image, len, darkness, v1, t1);
 }
 
 /*  xoshiro128++ 1.0
