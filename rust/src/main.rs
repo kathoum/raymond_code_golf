@@ -14,6 +14,8 @@ fn main() {
     check(&buf, &buf1, darkness, raymond_code_golf::v5d::darken);
     check(&buf, &buf1, darkness, raymond_code_golf::v6d::darken);
     check(&buf, &buf1, darkness, raymond_code_golf::v7d::darken);
+    check(&buf, &buf1, darkness, raymond_code_golf::v8d::darken);
+    check(&buf, &buf1, darkness, raymond_code_golf::v9d::darken);
 }
 
 fn check<F>(src: &Vec<Pixel>, dst: &[Pixel], darkness: i32, darken: F) where F: Fn(&mut [Pixel], i32) {
